@@ -1,30 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import odeint
 
-# Quantum master equation with constraint strength λ
+# Analytic solution for coherence decay
+λ_range = np.linspace(0, 5, 100)
+initial_coherence = 0.5  # Initial superposition strength
+simulation_time = 10     # Total evolution time
 
-
-def decoherence_model(rho, t, λ):
-    gamma = 0.1 * λ**2  # Decoherence rate proportional to λ²
-    return -gamma * (rho - np.diag(np.diag(rho)))  # Lindblad form
-
-
-# Parameters
-λ_range = np.linspace(0, 5, 50)
-times = np.linspace(0, 10, 100)
-rho0 = np.array([[0.5, 0.5], [0.5, 0.5]])  # Initial superposition state
-
-# Simulation
-branching_probs = []
-for λ in λ_range:
-    solution = odeint(decoherence_model, rho0.flatten(), times, args=(λ,))
-    final_rho = solution[-1].reshape((2, 2))
-    branching_probs.append(np.abs(final_rho[0, 1]))  # Off-diagonal survival
+# Compute branching probability: P = |coherence| = 0.5 * e^(-λ * 0.1 * t)
+branching_probs = initial_coherence * np.exp(-0.1 * λ_range * simulation_time)
 
 # Plotting
 plt.figure(figsize=(10, 6))
 plt.plot(λ_range, branching_probs, 'b-', linewidth=2)
+plt.yscale('log')
+plt.ylim(1e-3, 1)
 plt.xlabel('Constraint Strength (λ)', fontsize=14)
 plt.ylabel('Timeline Branching Probability', fontsize=14)
 plt.title('Quantum Decoherence vs FPIT Constraint Strength', fontsize=16)
