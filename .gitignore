@@ -172,3 +172,12 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# LaTeX and paper submission artefacts
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+*.zip
+cover_letter.tex
