@@ -1,4 +1,10 @@
-# Fixed Points in Time: Tensor-Based Framework for Chronology Protection
+<img src="fixed-points-social-preview.png" alt="Fixed Points in Time Tensors" width="100%">
+
+# Fixed Points in Time Tensors
+
+[![Python](https://img.shields.io/badge/python-3.10%20|%203.11%20|%203.12-1a3d2b)](https://python.org)
+[![LaTeX](https://img.shields.io/badge/paper-preprint%20forthcoming-c9a227)](https://github.com/its-not-rocket-science/fixed_points_in_time_tensors)
+[![MIT licence](https://img.shields.io/badge/licence-MIT-c9a227)](LICENSE)
 
 Supporting code for the paper:
 
